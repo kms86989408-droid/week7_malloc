@@ -48,8 +48,8 @@ team_t team = {
 #define WSIZE 4     // header / footer 크기 -> header 크기 = 4바이트, footer 크기 = 4바이트
 #define DSIZE 8     // double word 크기 8바이트 -> header + footer = 8바이트 / 최소 블록 사이즈 계산할 때 자주 쓰임
                                                                                                                             //ex) 빈 블록 하나의 최소크기 header4 + footer4 =8 
-#define CHUNKSIZE (1<<12)       // 처음 늘릴 힙 크기 1 << 12 = 4096 -> 4KB / heap공간이 부족할때 -> extent_heap(CHUNKSIZE / WSIZE)
-                                                        // 적당한 기본 단위로 4KB를 자주씀
+#define CHUNKSIZE (1<<9)       // 2의 9승 512KB 
+                                                        // 처음 늘릴 힙 크기 1 << 12 = 4096 -> 4KB / heap공간이 부족할때 -> extent_heap(CHUNKSIZE / WSIZE) 적당한 기본 단위로 4KB를 자주씀
 
 #define MAX(x,y) ((x) > (y) ? (x) : (y))    // 둘 중 큰 값을 고르는 매크로 / 사용예시 : size = MAX(asize, CHUNKSIZE);
                                                                                                         // 사용자가 요청한 크기가 크면 그만큼 늘리고, 작으면 CHUNKSIZE만큼 늘림
